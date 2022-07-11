@@ -30,11 +30,11 @@ public class ChatClient3  extends UnicastRemoteObject implements ChatClient3IF {
 
 	
 	/**
-	 * class constructor,
-	 * note may also use an overloaded constructor with 
-	 * a port no passed in argument to super
-	 * @throws RemoteException
-	 */
+        * construtor de classe,
+        * note também pode usar um construtor sobrecarregado com
+        * uma porta não passada em argumento para super
+        * @throws RemoteException
+        */
 	public ChatClient3(ClientRMIGUI aChatGUI, String userName) throws RemoteException {
 		super();
 		this.chatGUI = aChatGUI;
@@ -43,11 +43,11 @@ public class ChatClient3  extends UnicastRemoteObject implements ChatClient3IF {
 	}
 
 	
-	/**
-	 * Register our own listening service/interface
-	 * lookup the server RMI interface, then send our details
-	 * @throws RemoteException
-	 */
+     /**
+    * Registre nosso próprio serviço/interface de escuta
+    * procure a interface RMI do servidor e envie nossos detalhes
+    * @throws RemoteException
+    */
 	public void startClient() throws RemoteException {		
 		String[] details = {name, hostName, clientServiceName};	
 
@@ -74,10 +74,11 @@ public class ChatClient3  extends UnicastRemoteObject implements ChatClient3IF {
 
 
 	/**
-	 * pass our username, hostname and RMI service name to
-	 * the server to register out interest in joining the chat
-	 * @param details
-	 */
+	 * passe nosso nome de usuário, nome de host e nome de serviço RMI para
+        * o servidor para registrar interesse em participar do chat
+        * @param detalhes
+         */
+
 	public void registerWithServer(String[] details) {		
 		try{
 			serverIF.passIDentity(this.ref);//now redundant ??
@@ -90,10 +91,10 @@ public class ChatClient3  extends UnicastRemoteObject implements ChatClient3IF {
 
 	//=====================================================================
 	/**
-	 * Receive a string from the chat server
-	 * this is the clients RMI method, which will be used by the server 
-	 * to send messages to us
-	 */
+	 * Receba uma string do servidor de bate-papo
+        * este é o método RMI do cliente, que será utilizado pelo servidor
+        * para enviar mensagens para nós
+        */
 	@Override
 	public void messageFromServer(String message) throws RemoteException {
 		System.out.println( message );
@@ -103,9 +104,9 @@ public class ChatClient3  extends UnicastRemoteObject implements ChatClient3IF {
 	}
 
 	/**
-	 * A method to update the display of users 
-	 * currently connected to the server
-	 */
+        * Um método para atualizar a exibição de usuários
+        * atualmente conectado ao servidor
+        */
 	@Override
 	public void updateUserList(String[] currentUsers) throws RemoteException {
 
