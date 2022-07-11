@@ -8,7 +8,7 @@ import java.rmi.RemoteException;
  * A method to receive a string
  * A method to update changes to user list
  * 
- * @author @author Edson e Jorge
+ * @author Edson e Jorge
  *
  */
 public interface ChatClient3IF extends Remote{
@@ -18,9 +18,3 @@ public interface ChatClient3IF extends Remote{
 	public void updateUserList(String[] currentUsers) throws RemoteException;
 	
 }
-/**
- * 
- * 
- * 
- *
- */
