@@ -98,8 +98,6 @@ public class ClientRMIGUI extends JFrame implements ActionListener{
 		//remover botões de janela e moldura de borda
                 //para forçar o usuário a sair em um botão
                 //- uma maneira de controlar o comportamento de saída
-                //frame.setUndecorated(true);
-                //frame.getRootPane().setWindowDecorationStyle(JRootPane.FRAME);
 	
 		Container c = getContentPane();
 		JPanel outerPanel = new JPanel(new BorderLayout());
@@ -123,7 +121,7 @@ public class ClientRMIGUI extends JFrame implements ActionListener{
 	
 	
 	/**
-	 * Method to set up the JPanel to display the chat text
+	 *Método para configurar o JPanel para exibir o texto do chat
 	 * @return
 	 */
 	public JPanel getTextPanel(){
@@ -144,7 +142,7 @@ public class ClientRMIGUI extends JFrame implements ActionListener{
 	}
 	
 	/**
-	 * Method to build the panel with input field
+	 * Método para configurar o JPanel para exibir o texto do chat
 	 * @return inputPanel
 	 */
 	public JPanel getInputPanel(){
@@ -157,9 +155,9 @@ public class ClientRMIGUI extends JFrame implements ActionListener{
 	}
 
 	/**
-	 * Method to build the panel displaying currently connected users
-	 * with a call to the button panel building method
-	 * @return
+            * Método para construir o painel exibindo os usuários atualmente conectados
+           * com uma chamada para o método de construção do painel de botões
+           * @Retorna
 	 */
 	public JPanel getUsersPanel(){
 		
@@ -181,9 +179,9 @@ public class ClientRMIGUI extends JFrame implements ActionListener{
 	}
 
 	/**
-	 * Populate current user panel with a 
-	 * selectable list of currently connected users
-	 * @param currClients
+	 *Preencha o painel do usuário atual com um
+        * lista selecionável de usuários atualmente conectados
+        * @param currClients
 	 */
     public void setClientPanel(String[] currClients) {  	
     	clientPanel = new JPanel(new BorderLayout());
@@ -196,7 +194,7 @@ public class ClientRMIGUI extends JFrame implements ActionListener{
         	privateMsgButton.setEnabled(true);
         }
         
-        //Create the list and put it in a scroll pane.
+        //Cria a lista e a coloca em um painel de rolagem.
         list = new JList<String>(listModel);
         list.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
         list.setVisibleRowCount(8);
@@ -208,9 +206,9 @@ public class ClientRMIGUI extends JFrame implements ActionListener{
     }
 	
 	/**
-	 * Make the buttons and add the listener
-	 * @return
-	 */
+        * Faça os botões e adicione o ouvinte
+        * @Retorna
+        */
 	public JPanel makeButtonPanel() {		
 		sendButton = new JButton("Enviar ");
 		sendButton.addActionListener(this);
@@ -233,7 +231,7 @@ public class ClientRMIGUI extends JFrame implements ActionListener{
 	}
 	
 	/**
-	 * Action handling on the buttons
+	 * AÇÕES DE BOTÕES
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e){
@@ -257,7 +255,7 @@ public class ClientRMIGUI extends JFrame implements ActionListener{
 				}
 			}
 
-			//get text and clear textField
+			//geLIMPART TEXTO
 			if(e.getSource() == sendButton){
 				message = textField.getText();
 				textField.setText("");
@@ -265,7 +263,7 @@ public class ClientRMIGUI extends JFrame implements ActionListener{
 				System.out.println("Sending message : " + message);
 			}
 			
-			//send a private message, to selected users
+			//MENSAGEM PRIVADA
 			if(e.getSource() == privateMsgButton){
 				int[] privateList = list.getSelectedIndices();
 				
@@ -282,21 +280,18 @@ public class ClientRMIGUI extends JFrame implements ActionListener{
 			remoteExc.printStackTrace();	
 		}
 		
-	}//end actionPerformed
+	}
 
 	// --------------------------------------------------------------------
 	
-	/**
-	 * Send a message, to be relayed to all chatters
-	 * @param chatMessage
-	 * @throws RemoteException
+	/**Envia uma mensagem, para ser retransmitida para todos os participantes
 	 */
 	private void sendMessage(String chatMessage) throws RemoteException {
 		chatClient.serverIF.updateChat(name, chatMessage);
 	}
 
 	/**
-	 * Send a message, to be relayed, only to selected chatters
+	 * mensagem selecionada para uusuário 
 	 * @param chatMessage
 	 * @throws RemoteException
 	 */
@@ -306,12 +301,11 @@ public class ClientRMIGUI extends JFrame implements ActionListener{
 	}
 	
 	/**
-	 * Make the connection to the chat server
+	 * Coxexão com name
 	 * @param userName
 	 * @throws RemoteException
 	 */
 	private void getConnected(String userName) throws RemoteException{
-		//remove whitespace and non word characters to avoid malformed url
 		String cleanedUserName = userName.replaceAll("\\s+","_");
 		cleanedUserName = userName.replaceAll("\\W+","_");
 		try {		
