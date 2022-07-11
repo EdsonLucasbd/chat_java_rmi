@@ -76,9 +76,9 @@ public class ClientRMIGUI extends JFrame implements ActionListener{
 	
 		//-----------------------------------------
 		/*
-		 * intercept close method, inform server we are leaving
-		 * then let the system exit.
-		 */
+		 *interceptar o método close, informar ao servidor que estamos saindo
+                 * então deixe o sistema sair.
+                 */
 		frame.addWindowListener(new java.awt.event.WindowAdapter() {
 		    @Override
 		    public void windowClosing(java.awt.event.WindowEvent windowEvent) {
@@ -95,11 +95,11 @@ public class ClientRMIGUI extends JFrame implements ActionListener{
 		    }   
 		});
 		//-----------------------------------------
-		//remove window buttons and border frame
-		//to force user to exit on a button
-		//- one way to control the exit behaviour
-	    //frame.setUndecorated(true);
-	    //frame.getRootPane().setWindowDecorationStyle(JRootPane.FRAME);
+		//remover botões de janela e moldura de borda
+                //para forçar o usuário a sair em um botão
+                //- uma maneira de controlar o comportamento de saída
+                //frame.setUndecorated(true);
+                //frame.getRootPane().setWindowDecorationStyle(JRootPane.FRAME);
 	
 		Container c = getContentPane();
 		JPanel outerPanel = new JPanel(new BorderLayout());
