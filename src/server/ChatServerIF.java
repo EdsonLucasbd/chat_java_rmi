@@ -5,7 +5,7 @@ import java.rmi.RemoteException;
 import java.rmi.server.RemoteRef;
 
 /**
- * Server RMI interface
+ * Interface Server RMI
  * 
  * @author Edson e Jorge
  *
